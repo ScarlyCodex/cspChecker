@@ -299,7 +299,7 @@ func checkDuplicateValues(directives map[string][]string, issues *[]CSPIssue) {
 }
 
 func checkURLFormat(directives map[string][]string, issues *[]CSPIssue) {
-    pattern := regexp.MustCompile(`^https://[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]+/[a-zA-Z0-9-_/]+/?$`)
+    pattern := regexp.MustCompile(`^^https://[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]+(\/[a-zA-Z0-9-_/]+)?/?$`)
     for dir, values := range directives {
         for _, val := range values {
             if strings.HasPrefix(val, "https://") && !pattern.MatchString(val) {
